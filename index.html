@@ -264,10 +264,10 @@ img{max-width:100%;display:block;}
   position:relative;z-index:2;
   height:100%;width:auto;max-width:none;
   object-fit:contain;object-position:bottom;
-  transform:translateY(-2%);
   filter:drop-shadow(0 30px 50px rgba(0,0,0,.45));
-  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 88%, rgba(0,0,0,0) 100%);
-  mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 88%, rgba(0,0,0,0) 100%);
+  /* fades the desk surface out of the source photo and dissolves him into the bg */
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 96%);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 96%);
 }
 .hero-portrait-diamond{
   position:absolute;top:8%;right:2%;
@@ -315,6 +315,9 @@ h2.section-title{
   max-width:600px;margin:0 auto 72px;line-height:1.7;
 }
 .center-divider{display:flex;justify-content:center;margin-bottom:56px;}
+/* when a subtitle sits between the title and the divider, the divider supplies
+   the remaining breathing room */
+.section-title + .section-sub{margin-bottom:32px;}
 
 /* ===== SECTION 1: PROBLEMA ===== */
 .problem-grid{
@@ -403,7 +406,7 @@ h2.section-title{
 .purpose-card span{color:var(--white);font-weight:600;font-size:1rem;letter-spacing:.01em;}
 
 /* ===== SECTION 4: DIFERENCIAIS ===== */
-.diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;}
 .diff-card{
   background:var(--white);padding:40px 28px;
   border-top:2px solid var(--gold);
@@ -437,8 +440,13 @@ h2.section-title{
 }
 .contact-card::before{top:-6px;left:-6px;}
 .contact-card::after{bottom:-6px;right:-6px;}
-.contact-card h3{color:var(--white);font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:16px;}
-.contact-card .role{color:var(--gold-light);font-weight:600;font-size:1.05rem;margin-bottom:8px;}
+.contact-card h3{color:var(--white);font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:10px;}
+.contact-card .role{color:var(--gold-light);font-weight:600;font-size:1.05rem;margin-bottom:6px;}
+.contact-card .org{
+  color:rgba(255,255,255,.6);font-size:.92rem;letter-spacing:.04em;
+  font-style:italic;margin-bottom:32px;
+}
+.contact-card .org-sep{color:var(--gold);font-style:normal;margin:0 4px;}
 .contact-meta{
   display:flex;justify-content:center;gap:28px;flex-wrap:wrap;
   color:rgba(255,255,255,.75);font-size:.95rem;margin-bottom:36px;
@@ -562,14 +570,14 @@ footer p.copy{color:rgba(255,255,255,.4);font-size:.78rem;}
       </div>
       <div class="hero-signature">
         <span class="sig-line"></span>
-        <span class="sig-text">Conduzido por <b>Emerson Fialho</b> · Certificado ANBIMA CPA & C-Pro R</span>
+        <span class="sig-text">Conduzido por <b>Emerson Fialho</b> · Mais de 30 anos no mercado financeiro</span>
       </div>
     </div>
     <div class="hero-portrait">
       <div class="hero-portrait-glow"></div>
       <div class="hero-portrait-ring"></div>
       <span class="hero-portrait-diamond"></span>
-      <img src="assets/emerson-hero.png" alt="Emerson Fialho, consultor da Business Banker, em ligação com um cliente" width="900" height="900">
+      <img src="assets/emerson-hero-real.png" alt="Emerson Fialho, Founder &amp; Managing Director da Business Banker" width="1197" height="1314">
     </div>
   </div>
   <div class="scroll-hint">Role para descobrir<div class="stick"></div></div>
@@ -655,28 +663,39 @@ footer p.copy{color:rgba(255,255,255,.4);font-size:.78rem;}
   <div class="container">
     <div class="eyebrow reveal"><span class="line"></span>DIFERENCIAIS</div>
     <h2 class="section-title reveal">Por que estruturar com a Business Banker</h2>
+    <p class="section-sub reveal">Conectamos empresas às melhores soluções de capital disponíveis no mercado, com independência, experiência e foco nos resultados do cliente.</p>
     <div class="center-divider"><div class="gold-divider reveal"></div></div>
 
     <div class="diff-grid stagger">
       <div class="diff-card reveal">
         <div class="diff-icon"><span class="diamond"></span></div>
-        <h4>Acesso ao mercado inteiro</h4>
-        <p>Conhecemos o apetite de múltiplas instituições e levamos sua operação a quem realmente faz sentido.</p>
+        <h4>Mais de 30 anos de experiência</h4>
+        <p>Assessoria conduzida por profissional com mais de três décadas no mercado financeiro e certificações ANBIMA (CPA e C-Pro R).</p>
       </div>
       <div class="diff-card reveal">
         <div class="diff-icon"><span class="diamond"></span></div>
-        <h4>Negociação agressiva</h4>
-        <p>Trabalhamos ao lado do empresário para buscar prazo, custo e garantias melhores do que ele conseguiria sozinho.</p>
+        <h4>Consultoria independente</h4>
+        <p>Sem vínculo com um único banco. Trabalhamos pelo interesse da sua empresa, não pelo balcão de uma instituição.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon"><span class="diamond"></span></div>
+        <h4>Acesso a bancos e fintechs</h4>
+        <p>Conhecemos o apetite de diversas instituições financeiras e fintechs, e levamos sua operação a quem realmente faz sentido.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon"><span class="diamond"></span></div>
+        <h4>Atendimento consultivo e personalizado</h4>
+        <p>Cada empresa tem uma realidade. O atendimento é próximo, consultivo e desenhado para o seu contexto.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-icon"><span class="diamond"></span></div>
+        <h4>Estruturação sob medida</h4>
+        <p>Estruturamos a melhor solução de capital para cada empresa, definindo garantias, prazos e condições.</p>
       </div>
       <div class="diff-card reveal">
         <div class="diff-icon"><span class="diamond"></span></div>
         <h4>Do diagnóstico ao desembolso</h4>
-        <p>Conduzimos o processo de ponta a ponta, para que o empresário foque no que importa: o negócio.</p>
-      </div>
-      <div class="diff-card reveal">
-        <div class="diff-icon"><span class="diamond"></span></div>
-        <h4>Expertise certificada</h4>
-        <p>Assessoria conduzida por profissional com certificações ANBIMA (CPA e C-Pro R).</p>
+        <p>Conduzimos o processo de ponta a ponta — incluindo a negociação das condições — para que o empresário foque no negócio.</p>
       </div>
     </div>
   </div>
@@ -701,8 +720,10 @@ footer p.copy{color:rgba(255,255,255,.4);font-size:.78rem;}
 <section class="contact-section" id="contato">
   <div class="container">
     <div class="contact-card reveal">
-      <div class="role">Responsável técnico</div>
+      <!-- foto do Emerson entra aqui (arquivo a receber) -->
       <h3>Emerson Fialho</h3>
+      <div class="role">Founder &amp; Managing Director</div>
+      <div class="org">Business Banker <span class="org-sep">|</span> Corporate Credit Advisory</div>
       <div class="contact-meta">
         <a href="tel:+5531983220222">(31) 98322 0222</a>
         <a href="https://www.businessbankercapital.com.br" target="_blank" rel="noopener">www.businessbankercapital.com.br</a>
